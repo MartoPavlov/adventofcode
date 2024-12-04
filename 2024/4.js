@@ -1,31 +1,5 @@
 const SEARCHED_WORD = "XMAS";
 
-function countWordsOn(grid, row, col) {
-  const offsets = [
-    { row: -1, col: -1 },
-    { row: -1, col: 1 },
-    { row: 1, col: -1 },
-    { row: 1, col: 1 },
-    { row: -1, col: 0 },
-    { row: 1, col: 0 },
-    { row: 0, col: -1 },
-    { row: 0, col: 1 },
-  ];
-  let sum = 0;
-
-  for (let i = 0; i < offsets.length; i++) {
-    sum += findWordsByOffsetRecursively(
-      grid,
-      row,
-      col,
-      offsets[i].row,
-      offsets[i].col
-    );
-  }
-
-  return sum;
-}
-
 function findWordsByOffsetRecursively(
   grid,
   row,
@@ -62,6 +36,32 @@ function findWordsByOffsetRecursively(
   return 0;
 }
 
+function countWordsOn(grid, row, col) {
+  const offsets = [
+    { row: -1, col: -1 },
+    { row: -1, col: 1 },
+    { row: 1, col: -1 },
+    { row: 1, col: 1 },
+    { row: -1, col: 0 },
+    { row: 1, col: 0 },
+    { row: 0, col: -1 },
+    { row: 0, col: 1 },
+  ];
+  let sum = 0;
+
+  for (let i = 0; i < offsets.length; i++) {
+    sum += findWordsByOffsetRecursively(
+      grid,
+      row,
+      col,
+      offsets[i].row,
+      offsets[i].col
+    );
+  }
+
+  return sum;
+}
+
 function countMasCross(grid, row, col) {
   if (
     row === 0 ||
@@ -86,7 +86,7 @@ function countMasCross(grid, row, col) {
   crossDictionary[grid[row + 1][col + 1]]++;
 
   /**
-   * It is good enough to check if we have two M and S, and one if the diagonals
+   * It is good enough to check if we have two M and S, and one of the diagonals
    * doesn't contain the same letters
    */
   if (
