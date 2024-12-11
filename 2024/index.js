@@ -1,5 +1,6 @@
 const { day1 } = require("./1");
 const { day10 } = require("./10");
+const { day11Part1 } = require("./11_1");
 const { day2 } = require("./2");
 const { day3 } = require("./3");
 const { day4 } = require("./4");
@@ -20,4 +21,5 @@ module.exports = {
   day8,
   day9,
   day10,
+  day11Part1,
 };
